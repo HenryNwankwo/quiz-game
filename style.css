@@ -1,0 +1,163 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+main{
+    font-family:  segoe UI, tahoma, hevetica, calibri;
+    font-size: 1.5vw;
+    min-width: 100%;
+    min-height: 100vh;
+    background:azure;    
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 72px;
+    align-items: center;
+    background: orange;
+    color: #fff;
+}
+header p{    
+    font-family: Segoe UI;
+    font-size: 4em;        
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    background: azure;
+    min-height: auto;
+}
+.myflex_column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    min-width: 90%;    
+    min-height: auto; 
+    border-radius: 5% 0% 5% 0%;
+    box-shadow: 0.1px 0.2px 4px #333;
+    background:#fff;
+    margin: 5% 0%;
+    
+}
+.myflex_column p{
+    font-size: 1.1rem;
+}
+.myflex_column form{
+    min-width: 90%;
+}
+.question{
+    margin: 5%;
+    font-weight: 600;    
+}
+form .options{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    min-width:90%;
+    border: 1px solid #333;
+    height: 30px;
+    margin-bottom:5% ;    
+}
+.options input{
+    min-width: 20%;
+    
+    justify-content: center;
+    
+}
+.options label{
+    min-width: 80%;
+    font-size: 1rem;
+}
+.btn button{
+    min-width: 100%;
+    height: 30px;
+    background: darkcyan;
+    border: 0px;
+    color: #fff;
+    letter-spacing:2px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.btn button:hover{
+    border: 2px solid darkcyan;
+    color: darkcyan;
+    background: #fff;
+}
+.myflex_row{    
+    display:flex;
+    flex-direction: row;
+    align-self: flex-start;
+    margin-left: 5%;
+       
+}
+.myflex_row p{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: darkcyan;
+}
+@media screen and (min-width: 600px){
+    
+    .myflex_column{
+        min-width: 70%;    
+        min-height: auto; 
+    }
+    .myflex_row{    
+        display:flex;
+        flex-direction: row;
+        align-self: center;
+        margin-left: 0%;
+    }
+    .myflex_row p{
+        font-size: 1.3rem;    
+    }
+    header p{    
+    font-family: Segoe UI;
+    font-size: 2.5em;        
+    }
+}
+@media screen and (min-width: 900px){
+    
+    .myflex_column{
+
+        min-width: 50%;    
+        min-height: auto; 
+
+    }
+    header p{    
+    font-family: Segoe UI;
+    font-size: 2em;        
+    }
+    .myflex_row{
+        margin-left: 0%;
+    }
+    
+}
+@media screen and (min-width: 1200px){
+    
+    .myflex_column{
+
+        min-width: 40%;    
+        min-height: auto; 
+
+    }
+    header p{    
+    font-family: Segoe UI;
+    font-size: 1.5em;        
+    }
+    .myflex_row{
+        margin-left: 0%;
+    }
+    
+    
+}

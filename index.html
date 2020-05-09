@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quiz Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <main>
+            <header>
+                <p>Quiz Game</p>
+            </header>
+            <div class="col">
+                <div class="myflex_column" id="myflex_column">
+                    <p class="question">Welcome to the Quiz Game</p>
+                    <div class="btn startBtn">
+                            <button type="submit" id="startBtn" style="padding: 0px 10px; letter-spacing: 0px; font-family: segoe UI" >Click to start</button>
+                    </div>                
+             
+                </div>
+                <div class="myflex_row">
+                    <p>Score Counter: <span id="correctQuestions">0</span>/5</p>
+                </div>
+            </div>
+        </main>
+        <script>
+            const nextBtn = document.getElementById('nextBtn');
+            const startBtn = document.getElementById('startBtn');
+            const startBtnClass = document.querySelector('.startBtn');
+            const myFlexColumn = document.querySelector('#myflex_column');
+                let newFormElem = document.createElement('form');
+            
+            function structure(){
+                let newParagraphElem1 = document.createElement('p');
+                newParagraphElem1.setAttribute('class', 'question');
+                newParagraphElem1.setAttribute('id', 'question');
+                newParagraphElem1.textContent = "Which of these is an email client?";
+                newFormElem.appendChild(newParagraphElem1);
+
+                //First Div and input
+                let newDivElem1 = document.createElement('div');
+                newDivElem1.setAttribute('class', 'options');
+                newDivElem1.setAttribute('id', 'answer1');                        
+                newFormElem.appendChild(newDivElem1);
+
+                let newInputElem1 = document.createElement('input');
+                newInputElem1.setAttribute('type', 'radio');
+                newInputElem1.setAttribute('id', 'option1');
+                newInputElem1.setAttribute('name', 'answer');
+                newInputElem1.setAttribute('value', 'ymail');                        
+                newDivElem1.appendChild(newInputElem1);
+
+
+                let newLabelElem1 = document.createElement('label');
+                newLabelElem1.setAttribute('for', 'option1');
+                newLabelElem1.setAttribute('id', 'label1');
+                newLabelElem1.textContent = "Yahoo Mail";
+                newDivElem1.appendChild(newLabelElem1);
+
+                //Second Div and input
+                let newDivElem2 = document.createElement('div');
+                newDivElem2.setAttribute('class', 'options');
+                newDivElem2.setAttribute('id', 'answer2');                        
+                newFormElem.appendChild(newDivElem2);
+
+                let newInputElem2 = document.createElement('input');
+                newInputElem2.setAttribute('type', 'radio');
+                newInputElem2.setAttribute('id', 'option2');
+                newInputElem2.setAttribute('name', 'answer');
+                newInputElem2.setAttribute('value', 'outlook');                        
+                newDivElem2.appendChild(newInputElem2);
+
+                let newLabelElem2 = document.createElement('label');
+                newLabelElem2.setAttribute('for', 'option2');
+                newLabelElem2.setAttribute('id', 'label2');
+                newLabelElem2.textContent = "Outlook";
+                newDivElem2.appendChild(newLabelElem2);
+
+                //third div and input
+                let newDivElem3 = document.createElement('div');
+                newDivElem3.setAttribute('class', 'options');
+                newDivElem3.setAttribute('id', 'answer3');                        
+                newFormElem.appendChild(newDivElem3);
+
+                let newInputElem3 = document.createElement('input');
+                newInputElem3.setAttribute('type', 'radio');
+                newInputElem3.setAttribute('id', 'option3');
+                newInputElem3.setAttribute('name', 'answer');
+                newInputElem3.setAttribute('value', 'gmail');                        
+                newDivElem3.appendChild(newInputElem3);
+
+
+                let newLabelElem3 = document.createElement('label');
+                newLabelElem3.setAttribute('for', 'option3');
+                newLabelElem3.setAttribute('id', 'label3');
+                newLabelElem3.textContent = "Google Mail";
+                newDivElem3.appendChild(newLabelElem3);
+
+                //The submit and nextButton
+                let newDivBtnElem = document.createElement('div');
+                newDivBtnElem.setAttribute('class', 'btn');                                                
+                newDivBtnElem.setAttribute('id', 'btn');
+                newFormElem.appendChild(newDivBtnElem);
+
+                let newBtnElem = document.createElement('button');
+                newBtnElem.setAttribute('type', 'button');
+                newBtnElem.setAttribute('id', 'submitBtn');                
+                newBtnElem.textContent = "Submit and Next";
+                newDivBtnElem.appendChild(newBtnElem);
+                return {newBtnElem, newInputElem1, newInputElem2, newInputElem3, newLabelElem1, newLabelElem2, newLabelElem3};
+            }
+            
+            //Generating quiz document
+            function start(){   
+                let count = 1;
+                while(count <= 5){
+                                
+                myFlexColumn.appendChild(newFormElem);
+                startBtn.setAttribute('disabled', true);
+                startBtnClass.remove();
+                startBtn.remove(); 
+                
+                    let {newBtnElem, newInputElem1, newInputElem2, newInputElem3, newLabelElem1, newLabelElem2, newLabelElem3} = structure();
+
+                    newBtnElem.addEventListener('click', answerValidation);
+                    newBtnElem.addEventListener('click', changeText);
+                    
+                               
+                    
+                
+                
+               /**     let newParagraphElem1 = document.getElementById('question');
+                    let newInputElem1 = document.getElementById('option1');
+                    let newInputElem2 = document.getElementById('option2');
+                    let newInputElem3 = document.getElementById('option3');
+                    let newLabelElem1 = document.getElementById('label1');
+                    let newLabelElem2 = document.getElementById('label2');
+                    let newLabelElem3 = document.getElementById('label3');
+                    
+                    newParagraphElem1.textContent = "Which of these is an email client?";
+                    newInputElem1.setAttribute('value', 'ymail'); 
+                    newLabelElem1.textContent = "Yahoo Mail";
+
+                    newInputElem2.setAttribute('value', 'outlook');  
+                    newLabelElem2.textContent = "Outlook";
+
+                    newInputElem3.setAttribute('value', 'gmail'); 
+                    newLabelElem3.textContent = "Google Mail";          **/
+
+                    
+                }
+                
+
+            }
+                        
+                    /**    newParagraphElem1.textContent = "The Internet is controlled by one big computer.";
+                        newInputElem1.setAttribute('value', 'True'); 
+                        newLabelElem1.textContent = "True";
+                        
+                        newInputElem2.setAttribute('value', 'False'); 
+                        newLabelElem2.textContent = "False";
+                        
+                        newInputElem3.setAttribute('value', 'NOTA'); 
+                        newLabelElem3.textContent = "None of the above"; **/
+                        
+                
+            
+            
+            function changeText(){
+                const nextBtnElem = document.getElementById('submitBtn');
+                nextBtnElem.textContent = "Next";
+            }
+            
+                
+            //Determining and validating selection
+            function answerValidation(){
+                
+                let newDivBtnElem = document.getElementById('btn');
+             
+                
+                const theAnswer = "outlook";
+                let scoreCounterView = document.querySelector('#correctQuestions');
+                let scoreCounter = 0;                
+                let option1 = document.getElementById('option1');
+                let option2 = document.getElementById('option2');
+                let option3 = document.getElementById('option3');
+                let newParagraph = document.createElement('p');
+                const formDiv = document.querySelector('form');
+                    
+                //Checking if the first answer option is the answer
+                if(option1.checked == true && option1.value == theAnswer){
+                                        
+
+                    document.getElementById('answer1').style.background = 'green';
+                    document.getElementById('answer1').style.color = 'white'; 
+                    scoreCounterView.textContent = ++scoreCounter;
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                   
+                    return;
+                    
+                }
+                
+                if(option1.checked == true && option1.value !== theAnswer){
+                                        
+
+                    document.getElementById('answer1').style.background = 'red';
+                    document.getElementById('answer1').style.color = 'white';
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                    
+                    //Checking for the Right answer and style accordingly
+                    if(option2.value == theAnswer){
+                        
+                        document.getElementById('answer2').style.background = 'green';
+                        document.getElementById('answer2').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   if(option3.value == theAnswer){
+                        
+                        document.getElementById('answer3').style.background = 'green';
+                        document.getElementById('answer3').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   
+                    return;
+                    
+                }
+                //Checking if the second answer option is the answer
+                if(option2.checked == true && option2.value == theAnswer){
+                                        
+
+                    document.getElementById('answer2').style.background = 'green';
+                    document.getElementById('answer2').style.color = 'white'; 
+                    scoreCounterView.textContent = ++scoreCounter;
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                   
+                    return;
+                    
+                }
+                
+                if(option2.checked == true && option2.value !== theAnswer){
+                                        
+
+                    document.getElementById('answer2').style.background = 'red';
+                    document.getElementById('answer2').style.color = 'white'; 
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                    
+                    //Checking for the Right answer and style accordingly
+                    
+                    if(option1.value == theAnswer){
+                        
+                        document.getElementById('answer1').style.background = 'green';
+                        document.getElementById('answer1').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   if(option3.value == theAnswer){
+                        
+                        document.getElementById('answer3').style.background = 'green';
+                        document.getElementById('answer3').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   
+                    return;
+                    
+                }
+                if(option3.checked == true && option3.value == theAnswer){
+                                        
+
+                    document.getElementById('answer3').style.background = 'green';
+                    document.getElementById('answer3').style.color = 'white';  
+                    scoreCounterView.textContent = ++scoreCounter;
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                   
+                    return;
+                    
+                }
+                
+                if(option3.checked == true && option3.value !== theAnswer){
+                                        
+
+                    document.getElementById('answer3').style.background = 'red';
+                    document.getElementById('answer3').style.color = 'white';
+                    
+                    //disabling the inputs on submission
+                    option1.setAttribute('disabled', true);
+                    option2.setAttribute('disabled', true);
+                    option3.setAttribute('disabled', true);
+                    
+                    //Checking for the Right answer and style accordingly
+                    if(option1.value == theAnswer){
+                        
+                        document.getElementById('answer1').style.background = 'green';
+                        document.getElementById('answer1').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   if(option2.value == theAnswer){
+                        
+                        document.getElementById('answer2').style.background = 'green';
+                        document.getElementById('answer2').style.color = 'white'; 
+                        
+                        return;
+                    }
+                   
+                    return;
+                    
+                }  
+                         
+            }
+            startBtn.addEventListener('click', start);
+        </script>
+    </body>
+</html>
