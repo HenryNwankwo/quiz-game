@@ -29,7 +29,7 @@
             const startBtn = document.getElementById('startBtn');
             const startBtnClass = document.querySelector('.startBtn');
             const myFlexColumn = document.querySelector('#myflex_column');
-                let newFormElem = document.createElement('form');
+            let newFormElem = document.createElement('form');
             
             function structure(){
                 let newParagraphElem1 = document.createElement('p');
@@ -112,19 +112,19 @@
             }
             
             //Generating quiz document
-            function start(){   
-                let count = 1;
-                while(count <= 5){
-                                
+            function start(){  
                 myFlexColumn.appendChild(newFormElem);
                 startBtn.setAttribute('disabled', true);
                 startBtnClass.remove();
-                startBtn.remove(); 
+                startBtn.remove();  
+                
+                                              
+               
                 
                     let {newBtnElem, newInputElem1, newInputElem2, newInputElem3, newLabelElem1, newLabelElem2, newLabelElem3} = structure();
 
                     newBtnElem.addEventListener('click', answerValidation);
-                    newBtnElem.addEventListener('click', changeText);
+                    newBtnElem.addEventListener('click', changeBtn);
                     
                                
                     
@@ -149,7 +149,7 @@
                     newLabelElem3.textContent = "Google Mail";          **/
 
                     
-                }
+                
                 
 
             }
@@ -167,9 +167,18 @@
                 
             
             
-            function changeText(){
-                const nextBtnElem = document.getElementById('submitBtn');
+            function changeBtn(){
+                const submitBtnElem = document.getElementById('submitBtn');
+                const newDivBtnElem = document.getElementById('btn');
+                submitBtnElem.remove(); //textContent = "Next";
+                
+                let nextBtnElem = document.createElement('button');
+                nextBtnElem.setAttribute('type', 'button');
+                nextBtnElem.setAttribute('id', 'nextBtn');                
                 nextBtnElem.textContent = "Next";
+                newDivBtnElem.appendChild(nextBtnElem);                
+                
+                
             }
             
                 
